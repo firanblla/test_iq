@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Prediction Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Pastikan body tidak ada margin atau padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Mengatur tinggi halaman menjadi 100% */
+            width: 100%; /* Mengatur lebar halaman menjadi 100% */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Menggunakan font modern */
+        }
+
+        /* Gambar latar belakang mengisi seluruh layar */
+        .bg-container {
+            background-image: url('static/paper-brain-with-light-bulb.jpg');
+            background-size: cover; /* Gambar menutupi seluruh elemen */
+            background-position: center center; /* Memastikan gambar terpusat */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
+            height: 100vh; /* Menyesuaikan dengan tinggi layar */
+            display: flex;
+            justify-content: center; /* Menempatkan konten di tengah */
+            align-items: center; /* Vertikal center */
+            color: white; /* Menyesuaikan warna teks */
+        }
+
+        .container {
+            text-align: center; /* Menyusun konten di tengah */
+            max-width: 100%; /* Menyesuaikan dengan lebar layar */
+            padding: 0 20px; /* Memberikan sedikit padding agar tidak menempel ke tepi */
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text {
+            font-size: 1.25rem; /* Adjust font size */
+            color: #6c757d; /* Change color if needed */
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        .footer-text {
+            color: #6c757d; /* Change footer text color */
+            padding: 20px 0; /* Add padding for spacing */
+            font-size: 0.9rem; /* Adjust font size */
+        }
+
+        /* Form Card */
+        .card {
+            max-width: 500px;
+            width: 100%; /* Menyesuaikan dengan ukuran layar */
+            border-radius: 15px; /* Menambahkan border radius untuk sudut melengkung */
+            background: rgba(255, 255, 255, 0.8); /* Memberikan latar belakang putih transparan */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan shadow pada card */
+        }
+
+        .card-body {
+            padding: 30px; /* Memberikan padding agar isi card tidak terlalu menempel */
+        }
+
+        /* Input styling */
+        .form-control {
+            border-radius: 10px; /* Menghaluskan sudut input */
+            padding: 10px 15px; /* Memberikan padding pada input */
+            font-size: 1.1rem; /* Ukuran font input lebih besar */
+            border: 2px solid #007bff; /* Border biru terang pada input */
+        }
+
+        .form-control:focus {
+            border-color: #0056b3; /* Border lebih gelap ketika fokus */
+            box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.25); /* Efek focus */
+        }
+
+        .form-label {
+            color: black;
+            position: relative;
+            font-weight: 500; /* Membuat font lebih tebal agar lebih jelas */
+        }
+
+        /* Tombol styling */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 15px 25px; /* Membuat tombol lebih besar */
+            font-size: 1.25rem; /* Ukuran font tombol lebih besar */
+            border-radius: 10px; /* Membuat sudut tombol melengkung */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan transisi untuk hover */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Warna saat hover */
+            transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Gambar latar belakang mengisi seluruh layar -->
+    <div class="bg-container">
+        <div class="container mt-5">
+            <div class="text-center">
+                <h1 class="text-primary mb-3">🧠 Sistem Prediksi IQ 🧠</h1>
+                <p class="welcome-text text-muted" style="margin-bottom: 5px;">Selamat datang di Sistem Prediksi IQ.</p>
+                <p class="welcome-text text-muted" style="margin-top: 0;">Masukkan skor mentah Anda untuk memprediksi tingkat IQ Anda!</p>
+            </div>
+
+            <!-- Form Card -->
+            <div class="card shadow mx-auto">
+                <div class="card-body">
+                    <form action="/predict" method="post">
+                        <div class="mb-3">
+                            <label for="raw_score" class="form-label">Masukkan Skor Mentah</label>
+                            <input type="text" id="raw_score" name="raw_score" class="form-control" placeholder="e.g., 100" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Memprediksi IQ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-5 text-center footer-text">
+                <p>&copy; 2024 IQ Prediction System. All rights reserved.</p>
+                <p>Background image by <a href="https://www.freepik.com/free-photo/paper-brain-with-light-bulb_7796313.htm">Freepik</a>.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
